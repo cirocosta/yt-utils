@@ -14,18 +14,23 @@
   "bugs": {
     "url": "https://github.com/cirocosta/yt-utils/issues"
   },
+  "browser": {
+    "request": "browser-request"
+  },
   "homepage": "https://github.com/cirocosta/yt-utils",
   "main": "src/index.js",
   "scripts": {
     "test": "mocha test"
   },
   "devDependencies": {
+    "browserify": "^4.1.10",
     "gulp": "^3.8.0",
-    "gulp-concat": "^2.2.0",
+    "gulp-rename": "^1.2.0",
     "gulp-uglify": "^0.3.0",
     "mocha": "^1.20.1",
     "rimraf": "^2.2.8",
-    "sinon": "^1.10.2"
+    "sinon": "^1.10.2",
+    "vinyl-source-stream": "^0.1.1"
   },
   "dependencies": {
     "browser-request": "^0.3.1",

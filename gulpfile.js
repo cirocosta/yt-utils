@@ -1,27 +1,32 @@
 'use strict';
 
 var gulp = require('gulp')
-  , concat = require('gulp-concat')
   , uglify = require('gulp-uglify')
+  , rename = require('gulp-rename')
+  , browserify = require('browserify')
+  , source = require('vinyl-source-stream')
   , rimraf = require('rimraf');
-
-var paths = {
-  scripts: 'src/**/*.js'
-};
 
 gulp.task('clean', function(cb){
   rimraf('build/', cb);
 });
 
-gulp.task('scripts', ['clean'], function() {
-  return gulp.src(paths.scripts)
-    .pipe(uglify())
-    .pipe(concat('all.min.js'))
+gulp.task('browserify', function () {
+  return browserify('./src/yt.js')
+    .bundle()
+    .pipe(source('yt.js'))
+    .pipe(gulp.dest('./build/'));
+});
+
+gulp.task('build', ['browserify'], function () {
+  return gulp.src('./build/yt.js')
+    .pipe(uglify({mangle: true}))
+    .pipe(rename('yt.min.js'))
     .pipe(gulp.dest('build/'));
 });
 
 gulp.task('watch', function() {
-  gulp.watch(paths.scripts, ['scripts']);
+  gulp.watch(paths.scripts, ['build']);
 });
 
-gulp.task('default', ['watch', 'scripts']);
+gulp.task('default', ['watch', 'build']);
