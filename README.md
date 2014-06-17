@@ -1,12 +1,8 @@
-# youtube utils
+# youtube utils [![Build Status](https://travis-ci.org/cirocosta/yt-utils.svg?branch=master)](https://travis-ci.org/cirocosta/yt-utils)
 
 > Some utility functions for dealing with Youtube
 
-For node:
-
-```sh
-$ npm install --save yt-utils
-```
+[![NPM](https://nodei.co/npm/yt-utils.png?compact=true)](https://nodei.co/npm/yt-utils/)
 
 For running in the browser:
 
